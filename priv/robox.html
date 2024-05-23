@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Robox</title>
+    <script src='ej.js'></script>
+    <script src='wse.js'></script>
+    <script>
+      window.onload = function() {
+          if (Wse.open("ws://localhost:1235/websession"))
+              Wse.start('robox', 'run', [["robox", "robox_artist_img", "robox_queue_table", "robox_pause_button"]]);
+      };
+    </script>
+  </head>
+  <body style="background-color: #000000; color: #ffffff; ">
+    <table id="qr" style="width:100%; ">
+      <tr>
+	<td style="width: 20%; text-align: center"> SMS </td>
+	<td style="width: 20%; text-align: center"> MAIL </td>
+	<td style="width: 20%; text-align: center"> WEB </td>
+	<td style="width: 40%; text-align: center"> Local WIFI </td>
+      </tr>
+      <tr>
+	<td align="center"> <img id="smsto" src="file:/home/tony/erlang/robox/priv/smsto.png" width="128" height="128" ></td>
+	<td align="center"> <img id="mailto" src="file:/home/tony/erlang/robox/priv/mailto.png" width="128" height="128" ></td>
+	<td align="center"> <img id="webto" src="file:/home/tony/erlang/robox/priv/webto.png" width="128" height="128" ></td>
+	<td align="center"> <img id="wifi" src="file:/home/tony/erlang/robox/priv/wifi.png" width="128" height="128"></td>
+      </tr>
+    </table>
+    
+    <table>
+      <tr>
+	<td style="width:40%"><img id="robox_artist_img" src="http://www.rogvall.se/robox/robox.jpeg"  /></td>
+	<td>
+	  <!-- Queue table --> 
+	  <table id ="robox_queue_table" style="font-size: 16; border: 1px solid; width:50%; ">
+	    <th>
+	      <tr style="color: blue">
+		<td>Thumb</td>
+		<td>Track</td>	  
+		<td>Artist</td>
+		<td>Album</td>
+		<td>Duration</td>
+	      </tr>
+	    </th>
+	    <tr id="robox_queue_first_row">
+	      <td><img src="http://www.rogvall.se/robox/robox_thumb.jpeg" width="32" height="32" /></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>	    
+	    <tr><td><img src="http://www.rogvall.se/robox/robox_thumb.jpeg" width="32" height="32" /></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	    <tr><td><img src="http://www.rogvall.se/robox/robox_thumb.jpeg" width="32" height="32" /></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	    <tr><td><img src="http://www.rogvall.se/robox/robox_thumb.jpeg" width="32" height="32" /></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	    <tr><td><img src="http://www.rogvall.se/robox/robox_thumb.jpeg" width="32" height="32" /></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	    <tr><td><img src="http://www.rogvall.se/robox/robox_thumb.jpeg" width="32" height="32" /></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	    <tr><td id="follow">0</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	  </table>
+	</td>
+      </tr>
+
+      <tr>
+	<td></td>
+	<!-- Pause/Resume button -->
+	<td style="text-align: center;">
+	  <button id="robox_pause_button" autofocus
+		  onclick="Wse.notify('robox_pause','pause');"
+		  style="width: 50%; background-color: #333333; color: #cccccc; font-size: 36;">Pause</button>
+	  <button id="robox_next_button"
+		  onclick="Wse.notify('robox_next','next');"
+		  style="width: 20%; background-color: #333333; color: #cccccc; font-size: 36;">&gt;||</button>
+	</td>
+      </tr>
+    </table>
+  </body>
+</html>
