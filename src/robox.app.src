@@ -1,0 +1,9 @@
+{application, robox,
+ [{description, "Robox - Spotify Jukebox"},
+  {vsn, git},
+  {modules, ["@@MODULES@@"]},
+%%  {mod, {App_app, []}},
+%%  {registered, [App_srv]},
+  {env, []},
+  {applications,[kernel,stdlib]}
+  ]}.
