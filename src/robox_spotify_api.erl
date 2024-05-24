@@ -141,6 +141,7 @@ login() ->
     load(rester),
     case application:get_env(robox, spotify) of
 	{ok, Config} ->
+	    application:ensure_all_started(rester),
 	    Url = proplists:get_value(login_url, Config),
 	    ClientId = proplists:get_value(client_id, Config),
 	    ClientSecret = proplists:get_value(client_secret, Config),
